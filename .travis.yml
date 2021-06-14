@@ -1,0 +1,9 @@
+dist: precise
+sudo: false
+language: ruby
+rvm: 2.7.2
+env:
+  matrix:
+  - CMD="rubocop -D"
+script:
+- bundle exec $CMD

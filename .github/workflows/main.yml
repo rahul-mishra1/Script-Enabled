@@ -1,10 +1,22 @@
 name: Rubocop
-on: push
+on:
+  pull_request:
 
 jobs:
-  rubocop:
-      name: Rubocop
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - uses: prozsolt/rubocop-github-action@master
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7.2
+
+    - name: Run Rubocop
+      uses: jmarrec/rubocop-composite-action@v1
+      env:
+        GITHUB_TOKEN: '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'
+      with:
+        rubocop-version: '1.16.1'
+        ruby-version: '2.7.2'
